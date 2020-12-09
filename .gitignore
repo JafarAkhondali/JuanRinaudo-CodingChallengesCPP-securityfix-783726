@@ -1,0 +1,7 @@
+/build
+/data/imgui.ini
+/.gradle
+/android-project/.gradle
+/android-project/app/build
+/android-project/app/.externalNativeBuild
+/data/*.save

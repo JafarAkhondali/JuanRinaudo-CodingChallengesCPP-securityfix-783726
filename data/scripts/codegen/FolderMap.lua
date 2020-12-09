@@ -1,0 +1,16 @@
+ATLAS = "atlas/";
+BINARYTODATA = "binarytodata/";
+DATA = "data/";
+DUMP = "dump/";
+FONTS = "fonts/";
+IMAGES = "images/";
+SCRIPTS = "scripts/";
+SHADERS = "shaders/";
+SOUND = "sound/";
+IMAGES_PATTERNS = "images/patterns/";
+SCRIPTS_CODEGEN = "scripts/codegen/";
+SCRIPTS_ENVARI = "scripts/envari/";
+SHADERS_CORE = "shaders/core/";
+SHADERS_ES = "shaders/es/";
+SHADERS_TEST = "shaders/test/";
+SCRIPTS_ENVARI_SOCKET = "scripts/envari/socket/";
