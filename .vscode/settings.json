@@ -72,7 +72,8 @@
         "mutex": "cpp",
         "shared_mutex": "cpp",
         "xtree": "cpp",
-        "xmemory0": "cpp"
+        "xmemory0": "cpp",
+        "compare": "cpp"
     },
     "Lua.diagnostics.globals": [
         "LoadLibrary"
