@@ -1,12 +1,10 @@
-ATLAS = "atlas/";
-BINARYTODATA = "binarytodata/";
 DATA = "data/";
-DUMP = "dump/";
 FONTS = "fonts/";
 IMAGES = "images/";
 SCRIPTS = "scripts/";
 SHADERS = "shaders/";
 SOUND = "sound/";
+TOBINARY = "tobinary/";
 IMAGES_PATTERNS = "images/patterns/";
 SCRIPTS_CODEGEN = "scripts/codegen/";
 SCRIPTS_ENVARI = "scripts/envari/";

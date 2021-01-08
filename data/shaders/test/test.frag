@@ -13,27 +13,40 @@ out vec4 fragColor;
 #define PI 3.141592653589
 
 float easeSoftLoop(float x) {
-    float a = x * 2;
+    x = mod(x, 1);
+    float a = mod(x * 2, 2);
     return (x < 0.5) ?
         ((x < 0.25) ? (4 * pow(a, 3)) : (1 - pow(-2 * a + 2, 3) / 2))
         :
         ((x < 0.75) ? (pow(-2*a+2, 3) / 2 + 1) : (-4 * pow(a-2, 3)));
 }
 
+float easeSoftAscending(float x) {
+    float base = floor(x);
+    x = mod(x, 1);
+    return base + (
+        (x < 0.5) ? (4 * pow(x, 3)) : (1 - pow(-2 * x + 2, 3) / 2)
+    );
+}
+
 void main()
 {
-    // float t = sin(time * PI / 3);
-    float t = easeSoftLoop(mod(time / 3, 1));
-    float abst = abs(t) * 0.2;
-    float boxSize = 64;
-    float invBoxSize = boxSize / 512f;
-    // fragColor = vec4(mod(texCoord.x, invBoxSize) * boxSize, mod(texCoord.y, invBoxSize) * boxSize, 0, 1);
-    // float x = abs(cos((texCoord.x + PI) + abst));
-    // float y = abs(cos((texCoord.y + PI) + abst));
-    float s = 250;
-    float xMod = abst * cos((texCoord.x) * s) * sin((texCoord.y) * s) * texture2D(texture, texCoord).x;
-    float yMod = abst * cos((texCoord.x) * s) * sin((texCoord.y) * s);
-    float squares = mod(floor((texCoord.x + xMod) / invBoxSize) + floor((texCoord.y + yMod) / invBoxSize) + 1, 2);
-    float color = squares;
-    fragColor = vec4(color, color, color, 1);
+    vec2 uv = texCoord;
+
+    float t = easeSoftAscending(time) * PI;
+
+    float uvFactor = 50;
+    float gFactor = 1;
+    float bFactor = -1;
+
+    int index = int(mod((uv.x * uvFactor) / (PI * 2) + PI * .25, 2));
+    float r = 1 * (1 - sin(uv.x * uvFactor)) * index;
+
+    index = int(mod((uv.x * uvFactor + t * gFactor) / (PI * 2) + PI * .25, 2));
+    float g = 1 * (1 - sin(uv.x * uvFactor + t * gFactor)) * index;
+
+    index = int(mod((uv.x * uvFactor + t * bFactor) / (PI * 2) + PI * .25, 2));
+    float b = 1 * (1 - sin(uv.x * uvFactor + t * bFactor)) * index;
+
+    fragColor = vec4(r, g, b, 1);
 }

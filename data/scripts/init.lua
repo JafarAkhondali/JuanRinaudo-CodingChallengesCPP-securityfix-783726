@@ -23,16 +23,18 @@ function Init()
     camera.farPlane = 100.0;
     camera.view = IdM44();
     camera.projection = OrtographicProjection(camera.size, camera.ratio, camera.nearPlane, camera.farPlane);
+
+    drawShaderID = CompileProgram(SHADERS_CORE_TEXTURED_VERT, SHADERS_TEST_TEST_FRAG)
 end
 
 function Update()
     DrawClear(1, 0, 0, 1);
 
-    -- DrawColor(1, 1, 1, 1);
-    -- DrawImage(0, 0, 2, 2, IMAGES_PATTERNS_PATTERN06_PNG);
+    DrawColor(1, 1, 1, 1);
+    DrawOverrideProgram(drawShaderID)
+    DrawImage(0, 0, 2, 2, IMAGES_PATTERNS_PATTERN06_PNG);
 
-    DrawSetFont(defaultFontID);
-    DrawString(0, 0, "Render test 2000\nASD");
+    -- DrawString(0, 0, "Render test 2000\nASD");
 end
 
 function Unload()

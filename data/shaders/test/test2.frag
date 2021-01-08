@@ -13,27 +13,41 @@ out vec4 fragColor;
 #define PI 3.141592653589
 
 float easeSoftLoop(float x) {
-    float a = x * 2;
+    x = mod(x, 1);
+    float a = mod(x * 2, 2);
     return (x < 0.5) ?
         ((x < 0.25) ? (4 * pow(a, 3)) : (1 - pow(-2 * a + 2, 3) / 2))
         :
         ((x < 0.75) ? (pow(-2*a+2, 3) / 2 + 1) : (-4 * pow(a-2, 3)));
 }
 
+float easeSoftAscending(float x) {
+    float base = floor(x);
+    x = mod(x, 1);
+    return base + (
+        (x < 0.5) ? (4 * pow(x, 3)) : (1 - pow(-2 * x + 2, 3) / 2)
+    );
+}
+
 void main()
 {
-    // float t = sin(time * PI / 3);
-    float t = easeSoftLoop(mod(time / 2.5, 1));
-    float abst = abs(t);
-    float boxSize = 64;
-    float invBoxSize = boxSize / 512f;
-    // fragColor = vec4(mod(texCoord.x, invBoxSize) * boxSize, mod(texCoord.y, invBoxSize) * boxSize, 0, 1);//texture2D(texture, mod(texCoord.xy + time * speed, 1)) * color;
-    // float x = abs(cos((texCoord.x + PI) + abst));
-    // float y = abs(cos((texCoord.y + PI) + abst));
-    float s = 2;
-    float xMod = abst * cos((texCoord.y * 0.5) * s + PI);
-    float yMod = abst * sin((texCoord.x * 0.5) * s + PI);
-    float squares = mod(floor((texCoord.x + xMod) / invBoxSize) + floor((texCoord.y + yMod) / invBoxSize) + 1, 2);
-    float color = squares;
-    fragColor = vec4(color, color, color, 1);//texture2D(texture, mod(texCoord.xy + time * speed, 1)) * color;
+    vec2 uv = texCoord;
+
+    float t = easeSoftAscending(time) * PI;
+
+    float uvFactor = 50;
+    float rFactor = 1;
+    float gFactor = 1.3;
+    float bFactor = -1.3;
+
+    int index = int(mod((uv.x * uvFactor + t * rFactor) / (PI * 2) + PI * .25, 2));
+    float r = 1 * (1 - sin(uv.x * uvFactor + t * rFactor)) * index;
+
+    index = int(mod((uv.x * uvFactor + t * gFactor) / (PI * 2) + PI * .25, 2));
+    float g = 1 * (1 - sin(uv.x * uvFactor + t * gFactor)) * index;
+
+    index = int(mod((uv.x * uvFactor + t * bFactor) / (PI * 2) + PI * .25, 2));
+    float b = 1 * (1 - sin(uv.x * uvFactor + t * bFactor)) * index;
+
+    fragColor = vec4(r, g, b, 1);
 }
