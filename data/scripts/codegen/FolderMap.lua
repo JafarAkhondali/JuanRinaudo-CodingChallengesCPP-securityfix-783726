@@ -1,10 +1,13 @@
+ATLAS = "atlas/";
 DATA = "data/";
 FONTS = "fonts/";
 IMAGES = "images/";
+SAVE = "save/";
 SCRIPTS = "scripts/";
 SHADERS = "shaders/";
 SOUND = "sound/";
-TOBINARY = "tobinary/";
+TEMP = "temp/";
+VIDEO = "video/";
 IMAGES_PATTERNS = "images/patterns/";
 SCRIPTS_CODEGEN = "scripts/codegen/";
 SCRIPTS_ENVARI = "scripts/envari/";
