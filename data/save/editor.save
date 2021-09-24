@@ -1,11 +1,11 @@
 #version 1;
 editorFrameRunning 1 1 1;
 editorConsoleOpen 1 1 1;
-editorLogFlags 8 1 459262;
+editorLogFlags 8 1 983550;
 editorPreviewOpen 1 1 1;
 assetsWindowOpen 1 1 0;
 editorPerformanceDebuggerOpen 1 1 0;
-editorRenderDebuggerOpen 1 1 0;
+editorRenderDebuggerOpen 1 1 1;
 editorMemoryDebuggerOpen 1 1 0;
 editorTextureDebuggerOpen 1 1 0;
 editorInputDebuggerOpen 1 1 0;

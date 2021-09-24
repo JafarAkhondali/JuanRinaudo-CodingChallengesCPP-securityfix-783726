@@ -37,12 +37,12 @@ function Update()
 end
 
 function CirclesV1()
-    radius = 20;
+    radius = 30;
     colorOffset = 0.1;
     ySpeed = 3;
     yOffset = 8;
     perLineOffset = 0.55;
-    distance = V2(25, 30);
+    distance = V2(20, 25);
     count = V2(math.floor(render.bufferSize.x / distance.x), math.floor(render.bufferSize.y / distance.y));
 
     t = time.gameTime;
@@ -58,7 +58,7 @@ function CirclesV1()
             colorB = math.sin(i * 0.2 + t * 0.5 + j * perLineOffset) * 0.5 + 0.5;
 
             DrawColor(0, colorB, 1, 1);
-            DrawCircle(0 + i * distance.x, j * distance.y + math.sin(i + time.gameTime * ySpeed) * yOffset, radius, 0);
+            DrawCircle(0 + i * distance.x, j * distance.y + math.sin(i + time.gameTime * ySpeed) * yOffset, radius, 8);
         end
     end
 end
