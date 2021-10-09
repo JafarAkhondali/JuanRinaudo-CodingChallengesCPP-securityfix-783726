@@ -1,5 +1,10 @@
+CALCPOSMVP_VERT = "calcposmvp.vert";
 COLORED_FRAG = "colored.frag";
 COLORED_VERT = "colored.vert";
+COLOREDINSTANCED_FRAG = "coloredInstanced.frag";
+COLOREDINSTANCED_VERT = "coloredInstanced.vert";
+COLOREDINSTANCEDARTSY_FRAG = "coloredInstancedArtsy.frag";
+COLOREDINSTANCEDARTSY_VERT = "coloredInstancedArtsy.vert";
 FONT_FRAG = "font.frag";
 TEXTURED_FRAG = "textured.frag";
 TEXTURED_VERT = "textured.vert";

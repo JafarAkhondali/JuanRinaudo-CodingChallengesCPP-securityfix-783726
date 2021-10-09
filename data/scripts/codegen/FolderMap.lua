@@ -1,5 +1,7 @@
 ATLAS = "atlas/";
+BINARYTODATA = "binarytodata/";
 DATA = "data/";
+DUMP = "dump/";
 FONTS = "fonts/";
 IMAGES = "images/";
 SAVE = "save/";

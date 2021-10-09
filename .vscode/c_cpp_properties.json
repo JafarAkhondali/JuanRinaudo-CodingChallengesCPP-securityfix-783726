@@ -3,24 +3,24 @@
         {
             "name": "Win32",
             "includePath": [
+                "${default}",
                 "${workspaceFolder}/**"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE",
-                "GAME_EDITOR",
                 "GAME_SLOW",
                 "LUA_SCRIPTING_ENABLED",
                 "IMGUI_IMPL_OPENGL_LOADER_GL3W",
                 "STB_IMAGE_IMPLEMENTATION",
                 "STB_DS_IMPLEMENTATION",
                 "SOL_ALL_SAFETIES_ON",
+                "LUA_ENABLED"
             ],
-            "intelliSenseMode": "msvc-x86",
+            "intelliSenseMode": "${default}",
             "cppStandard": "c++17",
-            "windowsSdkVersion": "10.0.18362.0",
-            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.26.28801/bin/Hostx64/x64/cl.exe"
+            "compilerPath": "${default}"
         }
     ],
     "version": 4

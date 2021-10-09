@@ -74,7 +74,12 @@
         "xtree": "cpp",
         "xmemory0": "cpp",
         "compare": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "regex": "cpp",
+        "bit": "cpp",
+        "charconv": "cpp",
+        "stop_token": "cpp",
+        "unordered_set": "cpp"
     },
     "Lua.diagnostics.globals": [
         "LoadLibrary"
