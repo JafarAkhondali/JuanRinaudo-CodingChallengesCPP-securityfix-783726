@@ -14,14 +14,6 @@ function Load()
 
     artsyProgram = CompileProgramPlatform(COLOREDINSTANCEDARTSY_VERT, COLOREDINSTANCEDARTSY_FRAG);
     artsyLocationCountXY = GetUniformLocation(artsyProgram, "countXY")
-end
-
-function Update()
-    DrawSetLayer(0, false);
-    DrawDefaultTransform();
-
-    DrawClear(0, 0, 0, 1);
-    DrawColor(1, 0, 0, 1);
 
     divisor = 1;
     radius = 30;
@@ -33,12 +25,6 @@ function Update()
     
     count = V2(math.floor(render.bufferSize.x / distance.x), math.floor(render.bufferSize.y / distance.y));
 
-    t = time.gameTime;
-    st = math.sin(t);
-    sst = st * 0.5 + 0.5;
-    ast = math.abs(math.sin(t));
-    mt = math.fmod(t, 1);
-
     instancePositions = {};
 
     pi = 1;
@@ -49,6 +35,14 @@ function Update()
             pi = pi + 2
         end
     end
+end
+
+function Update()
+    DrawSetLayer(0, false);
+    DrawDefaultTransform();
+
+    DrawClear(0, 0, 0, 1);
+    DrawColor(1, 0, 0, 1);
 
     instanceCount = (count.x + 2) * (count.y + 2);
 
@@ -57,7 +51,6 @@ function Update()
     DrawOverrideProgram(artsyProgram);
     DrawInstancedCircles(instanceCount, instancePositions, radius, 8);
     DrawDisableOverrideProgram();
-    --DrawInstancedCircles(batchPositions, radius, 8);
 end
 
 function Unload()
