@@ -1,5 +1,6 @@
 /build
 /data/imgui.ini
+/data/dump
 /.gradle
 /android-project/.gradle
 /android-project/app/build

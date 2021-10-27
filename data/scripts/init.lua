@@ -16,23 +16,19 @@ function Load()
     artsyLocationCountXY = GetUniformLocation(artsyProgram, "countXY")
 
     divisor = 1;
-    radius = 30;
-    colorOffset = 0.1;
-    ySpeed = 3;
-    yOffset = 8;
-    perLineOffset = 0.55;
+    circleRadius = 30;
     distance = V2(20 / divisor, 25 / divisor);
     
     count = V2(math.floor(render.bufferSize.x / distance.x), math.floor(render.bufferSize.y / distance.y));
 
     instancePositions = {};
 
-    pi = 1;
+    positioIndex = 1;
     for j=0,(count.y + 1) do
         for i=0,(count.x + 1) do
-            instancePositions[pi + 0] = i * distance.x;
-            instancePositions[pi + 1] = j * distance.y;-- + math.sin(i + time.gameTime * ySpeed) * yOffset;
-            pi = pi + 2
+            instancePositions[positioIndex + 0] = i * distance.x;
+            instancePositions[positioIndex + 1] = j * distance.y;-- + math.sin(i + time.gameTime * ySpeed) * yOffset;
+            positioIndex = positioIndex + 2
         end
     end
 end
@@ -49,7 +45,7 @@ function Update()
     SetUniform2F(artsyProgram, artsyLocationCountXY, count.x + 2, count.y + 2);
 
     DrawOverrideProgram(artsyProgram);
-    DrawInstancedCircles(instanceCount, instancePositions, radius, 8);
+    DrawInstancedCircles(instanceCount, instancePositions, circleRadius, 8);
     DrawDisableOverrideProgram();
 end
 
