@@ -31,6 +31,9 @@ function Load()
             positioIndex = positioIndex + 2
         end
     end
+
+    editorShaderDebugger.programIndex = 6;
+    editorShaderDebugger.programIDChanged = true;
 end
 
 function Update()

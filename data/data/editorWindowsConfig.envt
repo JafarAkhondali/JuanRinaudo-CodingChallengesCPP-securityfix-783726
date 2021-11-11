@@ -1,0 +1,8 @@
+initLuaScript: "scripts/init.lua"; #Initial lua script for GameInit
+windowSize: 512 512; #Game resolution (if <= 64 is relative, if > 64 is fixed)
+bufferSize: 512 512; # Game frame buffer size (if <= 64 is relative, if > 64 is fixed)
+renderScale: 2; # Game buffer render scale
+windowTitle: "Envari Engine";
+vsync: 0; #0 disabled, 1 enabled
+fpsLimit: 30; #FPS limit, disabled if value is less than 0
+fpsFixed: 30; #Set fixed frames 

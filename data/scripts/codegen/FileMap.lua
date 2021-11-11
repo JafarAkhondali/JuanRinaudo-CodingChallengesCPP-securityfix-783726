@@ -1,6 +1,7 @@
 IMGUI_INI = "imgui.ini";
 DATA_ANDROIDCONFIG_ENVT = "data/androidConfig.envt";
-DATA_EDITORCONFIG_ENVT = "data/editorConfig.envt";
+DATA_EDITORWASMCONFIG_ENVT = "data/editorWasmConfig.envt";
+DATA_EDITORWINDOWSCONFIG_ENVT = "data/editorWindowsConfig.envt";
 DATA_WASMCONFIG_ENVT = "data/wasmConfig.envt";
 DATA_WINDOWSCONFIG_ENVT = "data/windowsConfig.envt";
 FONTS_ROBOTOMONO_REGULAR_TTF = "fonts/RobotoMono-Regular.ttf";

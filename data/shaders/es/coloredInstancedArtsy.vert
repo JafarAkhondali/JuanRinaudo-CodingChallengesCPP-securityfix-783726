@@ -22,9 +22,9 @@ void main()
         origin.x, origin.y, 0.0, 1.0);
             
     mat4 mScale = mat4(scale.x, 0.0, 0.0, 0.0,
-                0.0, scale.y, 0.0, 0.0,
-                0.0, 0.0, 1.0, 0.0,
-                0.0, 0.0, 0.0, 1.0);
+        0.0, scale.y, 0.0, 0.0,
+        0.0, 0.0, 1.0, 0.0,
+        0.0, 0.0, 0.0, 1.0);
 
     mat4 model = mPos * mScale;
 
