@@ -5,7 +5,7 @@ flat in int instanceID;
 
 out vec4 fragColor;
 
-uniform float count;
+uniform int count;
 uniform vec2 countXY;
 uniform float time;
 

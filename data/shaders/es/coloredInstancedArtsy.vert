@@ -3,7 +3,6 @@ precision mediump float;
 
 layout (location = 0) in vec3 position;
 layout (location = 1) in vec2 origin;
-// layout (location = 1) in mat4 mvp;
 
 flat out int instanceID;
 
@@ -12,7 +11,7 @@ uniform mat4 view;
 uniform mat4 parentMVP;
 uniform vec2 scale;
 uniform float time;
-uniform float count;
+uniform int count;
 
 void main()
 {    
@@ -31,5 +30,5 @@ void main()
     mat4 pv = projection * view * model * parentMVP;
 
     instanceID = gl_InstanceID;
-    gl_Position = pv * vec4(position.x, position.y + cos(time * 0.5 + float(instanceID) * 0.8) * 0.8, position.z, 1.0);
+    gl_Position = pv * vec4(position.x, position.y + cos(time * 0.5 + float(instanceID) * .8) * 0.8, position.z, 1.0);
 }

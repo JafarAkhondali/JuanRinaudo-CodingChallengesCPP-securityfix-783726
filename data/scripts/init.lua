@@ -52,6 +52,10 @@ function Update()
     DrawDisableOverrideProgram();
 end
 
+function EditorShaderReload()
+    artsyLocationCountXY = GetUniformLocation(artsyProgram, "countXY")
+end
+
 function Unload()
 
 end
