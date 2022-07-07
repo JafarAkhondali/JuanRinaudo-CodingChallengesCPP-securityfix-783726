@@ -1,16 +1,12 @@
 function Load()
-    LoadLibrary(SOL_LIBRARY_PACKAGE);
-    LoadLibrary(SOL_LIBRARY_OS);
-    LoadLibrary(SOL_LIBRARY_IO);
     LoadLibrary(SOL_LIBRARY_BASE);
     LoadLibrary(SOL_LIBRARY_STRING);
     LoadLibrary(SOL_LIBRARY_MATH);
     LoadLibrary(SOL_LIBRARY_TABLE);
-    LoadLibrary(SOL_LIBRARY_COROUTINE);
 
-    LoadScriptFile("scripts/codegen/ShaderMap.lua")
     LoadScriptFile("scripts/codegen/FileMap.lua")
-    LoadScriptFile("scripts/envari/mathextension.lua")
+    LoadScriptFile(SCRIPTS_CODEGEN_SHADERMAP_LUA)
+    LoadScriptFile(SCRIPTS_ENVARI_ENVARIEXTENSIONS_LUA)
 
     artsyProgram = CompileProgramPlatform(COLOREDINSTANCEDARTSY_VERT, COLOREDINSTANCEDARTSY_FRAG);
     artsyLocationCountXY = GetUniformLocation(artsyProgram, "countXY")
@@ -32,8 +28,8 @@ function Load()
         end
     end
 
-    editorShaderDebugger.programIndex = 6;
-    editorShaderDebugger.programIDChanged = true;
+    editorShaderDebugger.programIndex = 5;
+    editorShaderDebugger.programIndexChanged = true;
 end
 
 function Update()

@@ -20,7 +20,8 @@
             ],
             "intelliSenseMode": "${default}",
             "cppStandard": "c++17",
-            "compilerPath": "${default}"
+            "compilerPath": "${default}",
+            "cStandard": "c17"
         }
     ],
     "version": 4
