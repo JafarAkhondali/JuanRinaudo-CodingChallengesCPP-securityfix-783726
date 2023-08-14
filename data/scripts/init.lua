@@ -4,17 +4,26 @@ function Load()
     LoadLibrary(SOL_LIBRARY_MATH);
     LoadLibrary(SOL_LIBRARY_TABLE);
 
-    LoadScriptFile("scripts/codegen/FileMap.lua")
-    LoadScriptFile(SCRIPTS_CODEGEN_SHADERMAP_LUA)
-    LoadScriptFile(SCRIPTS_ENVARI_ENVARIEXTENSIONS_LUA)
+    LoadLUAScriptFile("scripts/codegen/FileMap.lua")
+    LoadLUAScriptFile(SCRIPTS_ENVARI_SDLSCANCODES_LUA)
+    LoadLUAScriptFile(SCRIPTS_CODEGEN_SHADERMAP_LUA)
+    LoadLUAScriptFile(SCRIPTS_ENVARI_ENVARIEXTENSIONS_LUA)
 
     artsyProgram = CompileProgramPlatform(COLOREDINSTANCEDARTSY_VERT, COLOREDINSTANCEDARTSY_FRAG);
     artsyLocationCountXY = GetUniformLocation(artsyProgram, "countXY")
 
     divisor = 1;
     circleRadius = 30;
-    distance = V2(20 / divisor, 25 / divisor);
+    circleSegments = 8;
     
+    Setup()
+
+    editorShaderDebugger.programIndex = 5;
+    editorShaderDebugger.programIndexChanged = true;
+end
+
+function Setup()
+    distance = V2(20 / divisor, 25 / divisor);
     count = V2(math.floor(render.bufferSize.x / distance.x), math.floor(render.bufferSize.y / distance.y));
 
     instancePositions = {};
@@ -27,9 +36,6 @@ function Load()
             positioIndex = positioIndex + 2
         end
     end
-
-    editorShaderDebugger.programIndex = 5;
-    editorShaderDebugger.programIndexChanged = true;
 end
 
 function Update()
@@ -44,7 +50,7 @@ function Update()
     SetUniform2F(artsyProgram, artsyLocationCountXY, count.x + 2, count.y + 2);
 
     DrawOverrideProgram(artsyProgram);
-    DrawInstancedCircles(instanceCount, instancePositions, circleRadius, 8);
+    DrawInstancedCircles(instanceCount, instancePositions, circleRadius, circleSegments);
     DrawDisableOverrideProgram();
 end
 

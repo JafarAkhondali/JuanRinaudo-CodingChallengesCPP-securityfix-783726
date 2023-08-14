@@ -1,15 +1,35 @@
--- #NOTE (Juan): Platform
+---@class char
+
+-- #NOTE (Juan): Functions
+function Load() end
+function Start() end
+function Update() end
+function Unload() end
+function End() end
+function EditorInit() end
+function EditorLayoutDrawn() end
+function EditorUpdate() end
+function EditorEnd() end
+function EditorConsoleDebugBar() end
+function EditorShaderReload() end
+function FocusChange() end
+
+-- #NOTE (Juan): Platf
+
+SCRIPTS_CODEGEN_FILEMAP_LUA = "";
 
 PLATFORM_EDITOR = 0;
 PLATFORM_WINDOWS = 0;
+PLATFORM_LINUX = 0;
+PLATFORM_ANDROID = 0;
 PLATFORM_WASM = 0;
 
 -- #NOTE (Juan): Lua
 
 ---@param filepath string
-function LoadScriptFile(filepath) end
+function LoadLUAScriptFile(filepath) end
 
----@param library LuaLibrary
+---@param library integer|LuaLibrary
 function LoadLibrary(library) end
 
 ---@class LuaLibrary
@@ -92,7 +112,7 @@ render = {
     windowSize = nil,
     defaultFontID = 0,
 
-    ---@type TextureAdjustStyle
+    ---@type integer|TextureAdjustStyle
     fitStyle = 0,
 }
 
@@ -110,10 +130,10 @@ camera = {
 
 ---@class Time
 time = {
-    realLastFrameGameTime = 0.0,
-    lastFrameGameTime = 0.0,
+    realTime = 0.0,
     gameTime = 0.0,
     deltaTime = 0.0,
+    timeScale = 0.0,
     gameFrames = 0,
     frames = 0,
 
@@ -158,8 +178,13 @@ function SetCustomCursor(texture) end
 
 function DisableCustomCursor() end
 
-KEY_COUNT = 0;
 MOUSE_COUNT = 0;
+KEY_COUNT = 0;
+CONTROLLER_COUNT = 0;
+CONTROLLER_AXIS_COUNT = 0;
+CONTROLLER_BUTTON_COUNT = 0;
+CONTROLLER_TOUCHPAD_POINTS = 0;
+CONTROLLER_DEADZONE_THRESHOLD = 0;
 TEXT_INPUT_BUFFER_COUNT = 0;
 
 ---@class KeyState
@@ -198,6 +223,22 @@ function ClickOverRectangle(rectangle, button) end
 ---@param rectangle rectangle2
 ---@param button integer
 function ClickedOverRectangle(rectangle, button) end
+
+---@return boolean
+---@param key char
+function GetKeyPressed(key) end
+
+---@return boolean
+---@param key char
+function GetKeyReleased(key) end
+
+---@return boolean
+---@param key char
+function GetKeyDown(key) end
+
+---@return boolean
+---@param key char
+function GetKeyUp(key) end
 
 ---@return string
 function GetClipboardText() end
@@ -365,7 +406,7 @@ function DrawSetFont(fontID) end
 
 ---@param posX number
 ---@param posY number
----@param singleChar string
+---@param singleChar char
 function DrawChar(posX, posY, singleChar) end
 
 ---@param posX number
@@ -379,7 +420,7 @@ function DrawString(posX, posY, string, renderFlags) end
 ---@param endX number
 ---@param endY number
 ---@param string string
----@param renderFlags integer
+---@param renderFlags integer|TextRenderFlag
 function DrawStyledString(posX, posY, endX, endY, string, renderFlags) end
 
 function ClearInputBuffer() end
@@ -806,7 +847,7 @@ function ChangeLogFlag(flag) end
 
 ---@class ShaderDebuggerWindow
 editorShaderDebugger = {
-    programIndexChanged = false,
+    programIDChanged = false,
     programIndex = 0,
 }
 
@@ -820,7 +861,9 @@ LogFlag_TIME = 0;
 LogFlag_LUA = 0;
 
 LogFlag_GAME = 0;
-LogFlag_SCRIPTING = 0;
+LogFlag_C_SCRIPTING = 0;
+LogFlag_LUA_SCRIPTING = 0;
+LogFlag_LUA_SCRIPTING_FUNCTIONS = 0;
 
 ImGuiCond_FirstUseEver = 0;
 

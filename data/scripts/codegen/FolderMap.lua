@@ -1,6 +1,6 @@
 ATLAS = "atlas/";
-BINARYTODATA = "binarytodata/";
-DATA = "data/";
+CODEGEN = "codegen/";
+CONFIG = "config/";
 DUMP = "dump/";
 FONTS = "fonts/";
 IMAGES = "images/";
